@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>robot_gazebo</name>
+  <version>0.0.0</version>
+  <description>
+    Gazebo simulation package for the KSAM competition
+  </description>
+  <license>Apache 2.0</license>
+  <maintainer email="mefisto@todo.todo">mefisto</maintainer>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>gazebo_ros</depend>
+  <exec_depend>gazebo</exec_depend>
+  <export>
+    <gazebo_ros gazebo_media_path="${prefix}"/>
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
+  </export>
+</package>
