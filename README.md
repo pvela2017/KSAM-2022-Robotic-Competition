@@ -22,6 +22,7 @@ catkin_make
 Before running the repository the models path needs to be setup:
 ```
 echo 'export GAZEBO_MODEL_PATH=~/KSAM-2022-Robotic-Competition/ros/src/robot_gazebo/models:${GAZEBO_MODEL_PATH}' >> ~/.bashrc
+source ~/.bashrc
 ```
 Finally to run the repository:
 ```
