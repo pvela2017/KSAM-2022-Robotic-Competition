@@ -38,7 +38,7 @@ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 
 ## TODO
 - [ ] This list
-- [ ] Fix Gazebo model according to our real robot
+- [ ] Fix Gazebo model according to our real robot https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/2
 - [ ] Karto SLAM
 - [ ] DWA https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/1
 - [ ] Global planner
