@@ -1,6 +1,6 @@
 <launch>
   <arg name="set_frame_id" default="base_scan"/>
-  <arg name="lds_model" default="$(env LDS_MODEL)" doc="LDS MODEL [LDS-01, LDS-02]"/>
+  <arg name="lds_model" default="LDS-02" doc="LDS MODEL [LDS-01, LDS-02]"/>
 
   <group if = "$(eval lds_model == 'LDS-01')">
     <node pkg="hls_lfcd_lds_driver" type="hlds_laser_publisher" name="turtlebot3_lds" output="screen">
