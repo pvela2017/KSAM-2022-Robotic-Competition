@@ -1,7 +1,13 @@
 # KSAM-2022-Robotic-Competition
 
 ## Introduction
-Write something
+**로봇 미션:** 제작한 로봇을 이용하여 과수원 모사 경기장 내의 출발점부터 도착점까지 주행하면서 과수 모형에 달린 과일을 검출, 분류, 계수함(로봇 임무 제한시간은 5분 이내) <br /> <br />
+**주행:** 과수 열을 인식하여 열 사이로 충돌없이 주행해야 함 <br />
+      &emsp; - 각 팀별로 주어지는 예비 시험에서 맵작성 가능 <br />
+      &emsp; - 주행시간은 로봇의 출발점부터 주행하면서 각 과수의 과일 검출을 끝내고 도착점까지 이동한 시간으로 측정함 <br /> <br />
+**회피:** 주행 동안 주어진 장애물 모형을 충돌 없이 회피하여야 함 <br />
+      &emsp; - 장애물은 본선대회 당일 임의 재배치 됨 <br /> <br />
+**검출:** 과수 모형에 달린 과일을 정상과와 질병과로 분류하고 계수해야 함
 
 ### Team Digi Ag
 Write something
@@ -49,7 +55,7 @@ roslaunch robot_slam robot_karto.launch
 ## TODO
 - [ ] This list
 - [ ] Fix Gazebo model according to our real robot https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/2
-- [ ] Karto SLAM
+- [ ] Karto SLAM https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/3
 - [ ] DWA https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/1
 - [ ] Global planner
 - [ ] Sensor fusion ?
