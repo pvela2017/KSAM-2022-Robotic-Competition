@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<sdf version='1.5'>
+
+<world name="scenario_2_world">
+
+  <!-- A global light source -->
+  <include>
+    <uri>model://sun</uri>
+  </include>
+  <!-- A ground plane -->
+  <include>
+    <uri>model://ground_plane</uri>
+  </include>
+
+  <model name="wall_west">
+      <include>
+        <uri>model://wall_1</uri>
+      </include>
+  </model>
+
+  <model name="wall_east">
+      <include>
+        <uri>model://wall_2</uri>
+      </include>
+  </model>
+
+   <model name="wall_south">
+      <include>
+        <uri>model://wall_3</uri>
+      </include>
+  </model>
+
+  <model name="wall_north">
+      <include>
+        <uri>model://wall_4</uri>
+      </include>
+  </model>
+
+  <population name="tree_population">
+    <model name="tree">
+      <include>
+        <uri>model://tree</uri>
+      </include>
+    </model>
+    <pose>1 1 0 0 0 0</pose>
+    <distribution>
+      <type>grid</type>
+      <rows>4</rows>
+      <cols>4</cols>
+      <step>0.55 0.3 0</step>
+    </distribution>
+  </population>
+
+
+  <population name="obstacle_population">
+    <model name="obstacle">
+      <include>
+        <uri>model://obstacle</uri>
+      </include>
+    </model>
+    <pose>1 1 0 0 0 0</pose>
+    <box>
+      <size>2 2 0.01</size>
+    </box>
+    <model_count>5</model_count>
+    <distribution>
+      <type>random</type>
+    </distribution>
+  </population>
+
+</world>
+
+</sdf>
