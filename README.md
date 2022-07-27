@@ -40,7 +40,7 @@ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 - [ ] This list
 - [ ] Fix Gazebo model according to our real robot
 - [ ] Karto SLAM
-- [ ] DWA 
+- [ ] DWA https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/1
 - [ ] Global planner
 - [ ] Sensor fusion ?
 - [ ] Fruit detection: YoloX
