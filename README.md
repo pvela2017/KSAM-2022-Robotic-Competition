@@ -36,3 +36,17 @@ source ./devel/setup.bash
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
 
+## TODO
+- [ ] This list
+- [ ] Fix Gazebo model according to our real robot
+- [ ] Karto SLAM
+- [ ] DWA 
+- [ ] Global planner
+- [ ] Sensor fusion ?
+- [ ] Fruit detection: YoloX
+- [ ] Fruit mapping
+
+
+
+
+
