@@ -24,16 +24,26 @@ Before running the repository the models path needs to be setup:
 echo 'export GAZEBO_MODEL_PATH=~/KSAM-2022-Robotic-Competition/ros/src/robot_gazebo/models:${GAZEBO_MODEL_PATH}' >> ~/.bashrc
 source ~/.bashrc
 ```
-Finally to run the repository:
+
+### Gazebo
 ```
 source ./devel/setup.bash
 roslaunch robot_gazebo scenario_1_world.launch
 ```
+### Teleoperation
 In another terminal:
 ```
 cd ~/KSAM-2022-Robotic-Competition/ros
 source ./devel/setup.bash
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+```
+
+### Karto SLAM
+In another terminal:
+```
+cd ~/KSAM-2022-Robotic-Competition/ros
+source ./devel/setup.bash
+roslaunch robot_slam robot_karto.launch
 ```
 
 ## TODO
