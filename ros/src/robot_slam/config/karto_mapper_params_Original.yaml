@@ -1,15 +1,11 @@
 # Parameters description: http://wiki.ros.org/slam_karto
 
-resolution: 0.01
-delta: 0.01
-map_update_interval: 1.0
-
 # General Parameters
 use_scan_matching: true
 use_scan_barycenter: true
-minimum_travel_distance: 0.03 
-minimum_travel_heading: 0.0872665             #in radians
-scan_buffer_size: 120
+minimum_travel_distance: 0.12 
+minimum_travel_heading: 0.174             #in radians
+scan_buffer_size: 70
 scan_buffer_maximum_scan_distance: 3.5
 link_match_minimum_response_fine: 0.12
 link_scan_maximum_distance: 3.5
