@@ -1,9 +1,9 @@
 <launch>
   <!-- Arguments -->
   <arg name="scan_topic"     default="scan"/>
-  <arg name="initial_pose_x" default="0.0"/>
-  <arg name="initial_pose_y" default="0.0"/>
-  <arg name="initial_pose_a" default="0.0"/>
+  <arg name="initial_pose_x" default="0.20"/>
+  <arg name="initial_pose_y" default="0.12"/>
+  <arg name="initial_pose_a" default="-1.5708"/>
 
   <!-- AMCL -->
   <node pkg="amcl" type="amcl" name="amcl">
