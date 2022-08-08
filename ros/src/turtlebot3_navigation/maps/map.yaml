@@ -1,4 +1,4 @@
-image: /home/sibl/map.pgm
+image: map.pgm
 resolution: 0.010000
 origin: [-0.039336, -0.033562, 0.000000]
 negate: 0
