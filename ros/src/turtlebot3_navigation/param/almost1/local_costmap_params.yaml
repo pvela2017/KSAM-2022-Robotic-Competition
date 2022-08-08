@@ -1,0 +1,16 @@
+# http://wiki.ros.org/costmap_2d
+
+local_costmap:
+  global_frame: odom
+  robot_base_frame: base_footprint
+
+  update_frequency: 10.0
+  publish_frequency: 10.0
+  transform_tolerance: 0.05  
+
+  static_map: false  
+  rolling_window: true
+  width: 2  # size of the map in meters
+  height: 2 # size of the map in meters
+  resolution: 0.01
+  

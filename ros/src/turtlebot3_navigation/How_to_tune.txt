@@ -1,1 +1,2 @@
 http://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide
+http://wiki.ros.org/navigation/Tutorials/RobotSetup
