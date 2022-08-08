@@ -46,6 +46,14 @@ source ./devel/setup.bash
 roslaunch robot_slam robot_karto.launch
 ```
 
+### Navigation
+In another terminal:
+```
+cd ~/KSAM-2022-Robotic-Competition/ros
+source ./devel/setup.bash
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch
+```
+
 ## TODO
 - [ ] This list
 - [ ] Fix Gazebo model according to our real robot https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/2
