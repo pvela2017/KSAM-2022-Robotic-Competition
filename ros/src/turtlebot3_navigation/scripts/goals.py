@@ -25,10 +25,12 @@ def movebase_client(current_goal):
    # No rotation of the mobile base frame w.r.t. map frame
     q = transforms3d.quaternions.axangle2quat([0, 0, 0] ,current_goal[2], True)
     # print(q)
-    goal.target_pose.pose.orientation.x = q[0]
-    goal.target_pose.pose.orientation.y = q[1]
-    goal.target_pose.pose.orientation.z = q[2]
-    goal.target_pose.pose.orientation.w = q[3]
+    # TODO fix the quaternion!
+    goal.target_pose.pose.orientation.x = 0#q[0]
+    goal.target_pose.pose.orientation.y = 0#q[1]
+    goal.target_pose.pose.orientation.z = 0#q[2]
+    goal.target_pose.pose.orientation.w = 1#q[3]
+    #print(goal)
 
    # Sends the goal to the action server.
     client.send_goal(goal)
@@ -50,13 +52,10 @@ if __name__ == '__main__':
        # Initializes a rospy node to let the SimpleActionClient publish and subscribe
         rospy.init_node('goals')
         while not path_completed:
-            result = movebase_client(goals[0])
+            result = movebase_client(goals.pop(0))
             if result:
                 rospy.loginfo("Goal execution done!")
-                #print(goals)
-                if not goals:
-                    del goals[0]
-                else:
+                if not goals: 
                     rospy.loginfo("Path completed")
                     path_completed = True
 
