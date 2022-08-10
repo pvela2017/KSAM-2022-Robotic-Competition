@@ -2,7 +2,7 @@
   <arg name="x_pos" default="0.20"/>
   <arg name="y_pos" default="0.12"/>
   <arg name="z_pos" default="0.0"/>
-  <arg name="yaw" default="-1.5708"/>
+  <arg name="yaw" default="0"/> <!-- -1.5708 -->
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find robot_gazebo)/worlds/scenario_3_world.sdf"/>
