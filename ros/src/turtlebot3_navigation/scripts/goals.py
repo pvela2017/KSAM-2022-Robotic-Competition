@@ -46,7 +46,7 @@ def movebase_client(current_goal):
 
 # If the python node is executed as main process (sourced directly)
 if __name__ == '__main__':
-    goals = [[0.426538, 0.222959, -1.5436], [0.4265, 1.6298, -1.5436], [0.9812, 1.6298, 1.5527], [0.9812, 0.4523, 1.5527], [1.5574, 0.4523, -1.5436], [1.6832, 1.9112, -1.5436]]
+    goals = [[0.15, 0.222959, 1.5436], [0.4265, 1.7, -1.5436], [0.9812, 1.7, 1.5527], [0.9812, 0.25, 1.5527], [1.3, 0.25, -1.5436], [1.6832, 1.9112, -1.5436]]
     path_completed = False
     try:
        # Initializes a rospy node to let the SimpleActionClient publish and subscribe
