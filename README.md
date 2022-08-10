@@ -15,7 +15,7 @@
 To install this repository on your home folder:
 ```
 cd ~
-git clone https://github.com/mefisto2017/KSAM-2022-Robotic-Competition
+git clone git@github.com:mefisto2017/KSAM-2022-Robotic-Competition.git
 cd KSAM-2022-Robotic-Competition/ros
 catkin_make
 ```
