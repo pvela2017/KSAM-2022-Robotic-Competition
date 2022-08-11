@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+<sdf version='1.5'>
+
+<world name="scenario_2_world">
+
+  <!-- A global light source -->
+  <include>
+    <uri>model://sun</uri>
+  </include>
+  <!-- A ground plane -->
+  <include>
+    <uri>model://ground_plane</uri>
+  </include>
+
+  <model name="wall_west">
+      <include>
+        <uri>model://wall_1</uri>
+      </include>
+  </model>
+
+  <model name="wall_east">
+      <include>
+        <uri>model://wall_2</uri>
+      </include>
+  </model>
+
+   <model name="wall_south">
+      <include>
+        <uri>model://wall_3</uri>
+      </include>
+  </model>
+
+  <model name="wall_north">
+      <include>
+        <uri>model://wall_4</uri>
+      </include>
+  </model>
+
+  <population name="tree_population">
+    <model name="tree">
+      <include>
+        <uri>model://tree</uri>
+      </include>
+    </model>
+    <pose>1 1 0 0 0 0</pose>
+    <distribution>
+      <type>grid</type>
+      <rows>4</rows>
+      <cols>4</cols>
+      <step>0.55 0.3 0</step>
+    </distribution>
+  </population>
+
+
+  <model name="obstacle_1">
+      <pose>0.293757 1.19057 -0.004249 0 -0 0</pose>
+      <include>
+        <uri>model://obstacle</uri>
+      </include>
+  </model>
+
+  <model name="obstacle_2">
+      <pose>0.759152 1.6843 0.000133 0 -0 0</pose>
+      <include>
+        <uri>model://obstacle</uri>
+      </include>
+  </model>
+
+  <model name="obstacle_3">
+      <pose>1.51917 0.892787 0.004125 0 -0 0</pose>
+      <include>
+        <uri>model://obstacle</uri>
+      </include>
+  </model>
+
+  <model name="obstacle_4">
+      <pose>1.7593 0.014731 -0.004461 0 -0 0</pose>
+      <include>
+        <uri>model://obstacle</uri>
+      </include>
+  </model>
+
+  <model name="obstacle_5">
+      <pose>0.016288 0 0.051783 0 -0 0</pose>
+      <include>
+        <uri>model://obstacle</uri>
+      </include>
+  </model>
+
+</world>
+
+</sdf>
