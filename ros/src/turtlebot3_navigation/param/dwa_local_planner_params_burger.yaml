@@ -22,9 +22,9 @@ DWAPlannerROS:
   trans_stopped_vel: 0.1
 
   # The absolute value of the maximum rotational velocity for the robot in rad/s
-  max_rot_vel: 5.0 # It should be max_rot_vel?
+  max_rot_vel: 5.0 # It should be max_rot_vel? NO, deprecated
   # The absolute value of the minimum rotational velocity for the robot in rad/s 
-  min_rot_vel: 0.4 # It should be min_rot_vel?
+  min_rot_vel: 0.4 # It should be min_rot_vel? NO, deprecated
 
   # The x acceleration limit of the robot in meters/sec^2 
   acc_lim_x: 2.5
