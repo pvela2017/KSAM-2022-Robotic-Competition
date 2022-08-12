@@ -23,12 +23,8 @@ DWAPlannerROS:
 
   # The absolute value of the maximum rotational velocity for the robot in rad/s
   max_rot_vel: 5.0 # It should be max_rot_vel? NO, deprecated
-  max_vel_theta: 2.75
   # The absolute value of the minimum rotational velocity for the robot in rad/s 
   min_rot_vel: 0.4 # It should be min_rot_vel? NO, deprecated
-  min_vel_theta: 1.37
-  
-  rot_stopped_vel: 0.4
 
   # The x acceleration limit of the robot in meters/sec^2 
   acc_lim_x: 2.5
@@ -42,7 +38,7 @@ DWAPlannerROS:
   xy_goal_tolerance: 0.05
   # The tolerance in radians for the controller in yaw/rotation when achieving its goal 
   yaw_goal_tolerance: 0.2
-  # If goal tolerance is latched, if the robot ever reaches the goal xy location it will simply rotate in place, even if it ends up outside the goal tolerance while it is doing so. 
+  # If goal tolerance is latched, if the robot ever reasches the goal xy location it will simply rotate in place, even if it ends up outside the goal tolerance while it is doing so. 
   latch_xy_goal_tolerance: false
 
 # Forward Simulation Parameters
@@ -61,13 +57,13 @@ DWAPlannerROS:
 
 # Trajectory Scoring Parameters
   # The weighting for how much the controller should stay close to the path it was given 
-  path_distance_bias: 50.0
+  path_distance_bias: 85.0
   # The weighting for how much the controller should attempt to reach its local goal, also controls speed 
-  goal_distance_bias: 20.0
-  # The weighting for how much the controller should attempt to avoid obstacles 
-  occdist_scale: 0.02
+  goal_distance_bias: 12.5
+  # The weighting for how much the controller shosuld attempt to avoid obstacles 
+  occdist_scale: 0.053
   # The distance from the center point of the robot to place an additional scoring point, in meters 
-  forward_point_distance: 0.325
+  forward_point_distance: 0.22
   # The amount of time that the robot must stop before a collision in order for a trajectory to be considered valid in seconds 
   stop_time_buffer: 0.1
   # The absolute value of the velocity at which to start scaling the robot's footprint, in m/s 

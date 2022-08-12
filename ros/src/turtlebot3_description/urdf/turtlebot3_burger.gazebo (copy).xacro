@@ -108,10 +108,10 @@
       <ray>
         <scan>
           <horizontal>
-            <samples>360</samples>
+            <samples>260</samples>
             <resolution>1</resolution>
-            <min_angle>0.0</min_angle>
-            <max_angle>6.28319</max_angle>
+            <min_angle>-2.26893</min_angle>
+            <max_angle>2.26893</max_angle>
           </horizontal>
         </scan>
         <range>
@@ -126,7 +126,7 @@
         </noise>
       </ray>
       <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
-        <topicName>pre_scan</topicName>
+        <topicName>scan</topicName>
         <frameName>base_scan</frameName>
       </plugin>
     </sensor>
