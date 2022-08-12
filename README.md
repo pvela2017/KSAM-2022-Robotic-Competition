@@ -71,14 +71,11 @@ rosrun turtlebot3_navigation reset.py
 
 
 ## TODO
-- [ ] This list
-- [ ] Fix Gazebo model according to our real robot https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/2
-- [ ] Karto SLAM https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/3
 - [ ] DWA https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/1
-- [ ] Global planner
-- [ ] Sensor fusion ?
-- [ ] Fruit detection: YoloX
-- [ ] Fruit mapping
+- [ ] Karto SLAM https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/3
+- [ ] Real Robot https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/7
+- [ ] Fruit Detection
+- [ ] Fruit Counting
 
 
 
