@@ -77,7 +77,7 @@ rosrun turtlebot3_navigation reset.py
 - [ ] Fruit Detection
 - [ ] Fruit Counting
 
-
+## Dection 'have to do'
 
 
 
