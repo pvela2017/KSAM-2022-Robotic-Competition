@@ -1,2 +1,7 @@
-devel/
-build/
+ros/devel/
+ros/build/
+YOLOX/assets/
+YOLOX/datasets/
+YOLOX/docs/
+YOLOX/pretrainedmodel/
+YOLOX/YOLOX_outputs/
