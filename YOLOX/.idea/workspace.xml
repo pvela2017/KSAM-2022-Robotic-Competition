@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e506d111-080a-4d40-9fdd-2a1790d8be0b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/exps/example/custom/nano.py" beforeDir="false" afterPath="$PROJECT_DIR$/exps/example/custom/nano.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yolox/exp/yolox_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/yolox/exp/yolox_base.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="3877e4c4-ec97-41a3-9ac4-31ec86091e2c" />
+  <component name="ProjectId" id="2ChLMIOu4YIENt4TmORIXYCk6Sl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e506d111-080a-4d40-9fdd-2a1790d8be0b" name="Default Changelist" comment="" />
+      <created>1659249824563</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1659249824563</updated>
+      <workItem from="1659249826764" duration="894000" />
+      <workItem from="1659941905005" duration="596000" />
+      <workItem from="1659949381250" duration="9112000" />
+      <workItem from="1660010482483" duration="958000" />
+      <workItem from="1660094442955" duration="16308000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

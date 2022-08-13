@@ -1,0 +1,13 @@
+python3 tools/demo_tile_stephanecharette.py image -f exps/example/yolox_voc/yolox_voc_s.py -c ./best_ckpt.pth --path ./tile_test/ --conf 0.25 --nms 0.45 --tsize 320 --save_result --device gpu
+
+
+
+python3 tools/demo_tile_kyj_upgrade.py image -f exps/example/yolox_voc/yolox_voc_s.py -c ./best_ckpt.pth --path ./tile_test/ --conf 0.25 --nms 0.45 --tsize 320 --save_result --device gpu
+
+
+
+python3 tools/demo_tile_ozge_unel.py image -f exps/example/yolox_voc/yolox_voc_s.py -c ./best_ckpt.pth --path ./tile_test/ --conf 0.25 --nms 0.45 --tsize 320 --save_result --device gpu
+
+
+
+python3 tools/demo.py image -f exps/example/custom/nano.py -c ./YOLOX_outputs/nano_2208_apple_train/best_ckpt.pth --path ./test_image/ --conf 0.25 --nms 0.45 --tsize 320 --save_result --device gpu
