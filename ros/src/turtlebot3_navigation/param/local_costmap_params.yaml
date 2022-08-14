@@ -4,11 +4,11 @@ local_costmap:
   robot_base_frame: base_footprint
 
   # The frequency in Hz for the map to be updated. 
-  update_frequency: 10.0
+  update_frequency: 5.0
   # The frequency in Hz for the map to be publish display information. 
-  publish_frequency: 10.0
+  publish_frequency: 5.0
   # Specifies the delay in transform (tf) data that is tolerable in seconds. This parameter serves as a safeguard to losing a link in the tf tree while still allowing an amount of latency the user is comfortable with to exist in the system. 
-  transform_tolerance: 0.05  
+  transform_tolerance: 0.5  
 
   static_map: false
   # Whether or not to use a rolling window version of the costmap.  

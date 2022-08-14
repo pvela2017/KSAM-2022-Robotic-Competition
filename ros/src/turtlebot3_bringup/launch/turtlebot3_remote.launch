@@ -1,9 +1,11 @@
 <launch>
   <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="sim_real" default="simulation" doc="Run simulation or real robot [simulation, real]"/>
   <arg name="multi_robot_name" default=""/>
 
   <include file="$(find turtlebot3_bringup)/launch/includes/description.launch.xml">
     <arg name="model" value="$(arg model)" />
+    <arg name="sim_real" value="$(arg sim_real)" />
   </include>
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">

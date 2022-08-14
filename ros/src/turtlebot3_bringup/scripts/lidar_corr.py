@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# https://answers.ros.org/question/277830/applying-restrictions-on-360-degree-lidar-for-slam-and-autonomous-navigation/
+
 import rospy
 import math
 from sensor_msgs.msg import LaserScan
