@@ -6,8 +6,9 @@ import rospy
 import actionlib
 # Brings in the .action file and messages used by the move base action
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
-
 import numpy as np
+
+from goal_points.goalsP import goalsP
 
 def get_quaternion_from_euler(roll, pitch, yaw):
   """
@@ -66,7 +67,7 @@ def movebase_client(current_goal):
 
 # If the python node is executed as main process (sourced directly)
 if __name__ == '__main__':
-    goals = [[0.15, 0.222959, 1.5436], [0.4265, 1.7, -1.5436], [0.9812, 1.7, 1.5527], [0.9812, 0.25, 1.5527], [1.3, 0.25, -1.5436], [1.6832, 1.9112, -1.5436]]
+    goals = [goalsP["GOAL_1"], goalsP["GOAL_2"], goalsP["GOAL_3"], goalsP["GOAL_4"], goalsP["GOAL_5"], goalsP["GOAL_6"]]
     path_completed = False
     try:
        # Initializes a rospy node to let the SimpleActionClient publish and subscribe
