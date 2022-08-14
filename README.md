@@ -11,7 +11,7 @@
 
 ![This is an image](images/gazebo1.jpg)
 
-## Instalation & run
+## Instalation
 To install this repository on your home folder:
 ```
 cd ~
@@ -25,17 +25,12 @@ echo 'export GAZEBO_MODEL_PATH=~/KSAM-2022-Robotic-Competition/ros/src/robot_gaz
 source ~/.bashrc
 ```
 
+## Run Simulation
+
 ### Gazebo
 ```
 source ./devel/setup.bash
 roslaunch robot_gazebo scenario_1_world.launch
-```
-### Teleoperation
-In another terminal:
-```
-cd ~/KSAM-2022-Robotic-Competition/ros
-source ./devel/setup.bash
-roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
 
 ### Karto SLAM
@@ -43,7 +38,7 @@ In another terminal:
 ```
 cd ~/KSAM-2022-Robotic-Competition/ros
 source ./devel/setup.bash
-roslaunch robot_slam robot_karto.launch
+roslaunch robot_slam robot_karto.launch sim_real:='simulation'
 ```
 
 ### Navigation
@@ -51,7 +46,42 @@ In another terminal:
 ```
 cd ~/KSAM-2022-Robotic-Competition/ros
 source ./devel/setup.bash
-roslaunch turtlebot3_navigation turtlebot3_navigation.launch
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation'
+```
+
+
+## Run Real Robot
+
+### Bring Up
+```
+source ./devel/setup.bash
+roslaunch turtlebot_bringup turtlebot_robot
+```
+
+### Karto SLAM
+In another terminal:
+```
+cd ~/KSAM-2022-Robotic-Competition/ros
+source ./devel/setup.bash
+roslaunch robot_slam robot_karto.launch sim_real:='real'
+```
+
+### Navigation
+In another terminal:
+```
+cd ~/KSAM-2022-Robotic-Competition/ros
+source ./devel/setup.bash
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='real'
+```
+
+## Common Scripts
+
+### Teleoperation
+In another terminal:
+```
+cd ~/KSAM-2022-Robotic-Competition/ros
+source ./devel/setup.bash
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
 
 To initiate the waypoints:
