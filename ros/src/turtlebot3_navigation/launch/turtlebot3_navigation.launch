@@ -2,6 +2,7 @@
   <!-- Arguments -->
   <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
   <arg name="sim_real" default="" doc="Run simulation or real robot [simulation, real]"/>
+  <arg name="planner" default="" doc="model type [dwa, teb]"/>
   <arg name="map_file" default="$(find turtlebot3_navigation)/maps/map_005.yaml"/>
   <arg name="open_rviz" default="true"/>
   <arg name="move_forward_only" default="false"/>
@@ -19,7 +20,7 @@
   <include file="$(find turtlebot3_navigation)/launch/amcl.launch"/>
 
   <!-- move_base -->
-  <include file="$(find turtlebot3_navigation)/launch/move_base.launch">
+  <include file="$(find turtlebot3_navigation)/launch/move_base_$(arg planner).launch">
     <arg name="model" value="$(arg model)" />
     <arg name="move_forward_only" value="$(arg move_forward_only)"/>
   </include>
