@@ -46,7 +46,14 @@ In another terminal:
 ```
 cd ~/KSAM-2022-Robotic-Competition/ros
 source ./devel/setup.bash
-roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation'
+```
+DWA planner:
+```
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation' planner:=dwa
+```
+TEB planner:
+```
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation' planner:=teb
 ```
 
 
@@ -72,8 +79,16 @@ In another terminal:
 ```
 cd ~/KSAM-2022-Robotic-Competition/ros
 source ./devel/setup.bash
-roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='real'
 ```
+DWA planner:
+```
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation' planner:=dwa
+```
+TEB planner:
+```
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation' planner:=teb
+```
+
 
 ## Common Scripts
 
