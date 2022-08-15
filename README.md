@@ -54,6 +54,7 @@ roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulati
 
 ### Bring Up
 ```
+cd ~/KSAM-2022-Robotic-Competition/ros
 source ./devel/setup.bash
 roslaunch turtlebot_bringup turtlebot_robot
 ```
