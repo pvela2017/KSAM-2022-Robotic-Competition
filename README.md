@@ -14,6 +14,7 @@
 ## Requierements
 ```
 sudo apt-get install ros-noetic-slam-karto
+sudo apt-get install ros-noetic-teb-local-planner
 ```
 
 ## Instalation
