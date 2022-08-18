@@ -11,6 +11,12 @@
 
 ![This is an image](images/gazebo1.jpg)
 
+## Requierements
+```
+sudo apt-get install ros-noetic-slam-karto
+sudo apt-get install ros-noetic-teb-local-planner
+```
+
 ## Instalation
 To install this repository on your home folder:
 ```
@@ -38,7 +44,7 @@ In another terminal:
 ```
 cd ~/KSAM-2022-Robotic-Competition/ros
 source ./devel/setup.bash
-roslaunch robot_slam robot_karto.launch sim_real:='simulation'
+roslaunch robot_slam robot_slam.launch sim_real:='simulation'
 ```
 
 ### Navigation
@@ -71,7 +77,7 @@ In another terminal:
 ```
 cd ~/KSAM-2022-Robotic-Competition/ros
 source ./devel/setup.bash
-roslaunch robot_slam robot_karto.launch sim_real:='real'
+roslaunch robot_slam robot_slam.launch sim_real:='real'
 ```
 
 ### Navigation
