@@ -11,6 +11,11 @@
 
 ![This is an image](images/gazebo1.jpg)
 
+## Requierements
+```
+sudo apt-get install ros-noetic-slam-karto
+```
+
 ## Instalation
 To install this repository on your home folder:
 ```
