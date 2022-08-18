@@ -1,6 +1,6 @@
 <launch>
   <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
-  <arg name="sim_real" default="simulation" doc="Run simulation or real robot [simulation, real]"/>
+  <arg name="sim_real" default="" doc="Run simulation or real robot [simulation, real]"/>
   <arg name="multi_robot_name" default=""/>
 
   <include file="$(find turtlebot3_bringup)/launch/includes/description.launch.xml">
