@@ -43,13 +43,13 @@ DWAPlannerROS:
 
 # Forward Simulation Parameters
   # The amount of time to forward-simulate trajectories in seconds 
-  sim_time: 1.5
+  sim_time: 1.9
   # The number of samples to use when exploring the x velocity space 
   vx_samples: 20
   # The number of samples to use when exploring the y velocity space 
   vy_samples: 0
   # The number of samples to use when exploring the theta velocity space 
-  vth_samples: 40
+  vth_samples: 25
   # The frequency at which this controller will be called in Hz
   controller_frequency: 10.0
   # The step size, in meters, to take between points on a given trajectory 
@@ -57,13 +57,13 @@ DWAPlannerROS:
 
 # Trajectory Scoring Parameters
   # The weighting for how much the controller should stay close to the path it was given 
-  path_distance_bias: 85.0
+  path_distance_bias: 80.3
   # The weighting for how much the controller should attempt to reach its local goal, also controls speed 
-  goal_distance_bias: 12.5
+  goal_distance_bias: 11.7
   # The weighting for how much the controller shosuld attempt to avoid obstacles 
-  occdist_scale: 0.053
+  occdist_scale: 0.0174
   # The distance from the center point of the robot to place an additional scoring point, in meters 
-  forward_point_distance: 0.22
+  forward_point_distance: 0.27
   # The amount of time that the robot must stop before a collision in order for a trajectory to be considered valid in seconds 
   stop_time_buffer: 0.1
   # The absolute value of the velocity at which to start scaling the robot's footprint, in m/s 
