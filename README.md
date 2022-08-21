@@ -11,7 +11,7 @@
 
 ![This is an image](images/gazebo1.jpg)
 
-## Requierements
+## Requirements
 ```
 sudo apt-get install ros-noetic-slam-karto
 sudo apt-get install ros-noetic-teb-local-planner
