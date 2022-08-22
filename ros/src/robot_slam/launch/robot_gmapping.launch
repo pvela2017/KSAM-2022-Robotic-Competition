@@ -7,7 +7,13 @@
   <arg name="set_map_frame"  default="map"/>
 
   <!-- Gmapping -->
+
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain" output="screen" name="laser_filter">
+    <rosparam file="$(find robot_slam)/config/angle_filter.yaml" command="load"/>
+  </node>
+
   <node pkg="gmapping" type="slam_gmapping" name="turtlebot3_slam_gmapping" output="screen">
+    <remap from="scan" to="scan_filtered" />                                                                <!-- Filter-->
     <param name="base_frame" value="$(arg set_base_frame)"/>
     <param name="odom_frame" value="$(arg set_odom_frame)"/>
     <param name="map_frame"  value="$(arg set_map_frame)"/>

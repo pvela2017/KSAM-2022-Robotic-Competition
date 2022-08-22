@@ -1,7 +1,7 @@
 <launch>
   <!-- Arguments -->
   <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
-  <arg name="sim_real" default="" doc="Run simulation or real robot [simulation, real]"/>
+  <arg name="sim_real" default="simulation" doc="Run simulation or real robot [simulation, real]"/>
   <arg name="planner" default="" doc="model type [dwa, teb]"/>
   <arg name="map_file" default="$(find turtlebot3_navigation)/maps/map_005.yaml"/>
   <arg name="open_rviz" default="true"/>
@@ -15,6 +15,11 @@
 
   <!-- Map server -->
   <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+
+  <!-- Laser filter -->
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain" output="screen" name="laser_filter">
+    <rosparam file="$(find robot_slam)/config/angle_filter.yaml" command="load"/>
+  </node>
 
   <!-- AMCL -->
   <include file="$(find turtlebot3_navigation)/launch/amcl.launch"/>

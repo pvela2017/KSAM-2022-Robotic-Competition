@@ -4,7 +4,12 @@
   <arg name="configuration_basename" default="turtlebot3_lds_2d.lua"/>
   
  <!-- slam_karto -->
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain" output="screen" name="laser_filter">
+    <rosparam file="$(find robot_slam)/config/angle_filter.yaml" command="load"/>
+  </node>
+
   <node pkg="slam_karto" type="slam_karto" name="slam_karto" output="screen">
+    <remap from="scan" to="scan_filtered" />                                                <!-- Filter-->
     <rosparam command="load" file="$(find robot_slam)/config/karto_mapper_params.yaml" />
   </node>
 

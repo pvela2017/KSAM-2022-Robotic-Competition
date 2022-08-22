@@ -1,6 +1,6 @@
 <launch>
   <!-- Arguments -->
-  <arg name="scan_topic"     default="scan"/>
+  <arg name="scan_topic"     default="scan_filtered"/>  <!-- Filter-->
   <arg name="initial_pose_x" default="0.450"/>
   <arg name="initial_pose_y" default="0.07"/>
   <arg name="initial_pose_a" default="1.5708"/> <!-- -1.5708 -->
