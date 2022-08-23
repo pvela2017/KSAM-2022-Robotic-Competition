@@ -1,9 +1,9 @@
 <launch>
   <!-- Arguments -->
   <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
-  <arg name="slam_methods" default="karto" doc="slam type [gmapping, cartographer, hector, karto, frontier_exploration]"/>
+  <arg name="slam_method" default="" doc="slam type [gmapping, cartographer, hector, karto, frontier_exploration]"/>
   <arg name="configuration_basename" default="turtlebot3_lds_2d.lua"/>
-  <arg name="sim_real" default="" doc="Run simulation or real robot [simulation, real]"/>
+  <arg name="sim_real" default="simulation" doc="Run simulation or real robot [simulation, real]"/>
   <arg name="open_rviz" default="true"/>
 
   <!-- TurtleBot3 -->
@@ -13,13 +13,13 @@
   </include>
 
   <!-- SLAM: Gmapping, Cartographer, Hector, Karto, Frontier_exploration, RTAB-Map -->
-  <include file="$(find robot_slam)/launch/robot_$(arg slam_methods).launch">
+  <include file="$(find robot_slam)/launch/robot_$(arg slam_method).launch">
     <arg name="configuration_basename" value="$(arg configuration_basename)"/>
   </include>
 
   <!-- rviz -->
   <group if="$(arg open_rviz)"> 
     <node pkg="rviz" type="rviz" name="rviz" required="true"
-          args="-d $(find robot_slam)/rviz/robot_$(arg slam_methods).rviz"/>
+          args="-d $(find robot_slam)/rviz/robot_$(arg slam_method).rviz"/>
   </group>
 </launch>

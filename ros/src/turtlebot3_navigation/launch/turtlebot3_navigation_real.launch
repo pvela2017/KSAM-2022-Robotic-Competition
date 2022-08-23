@@ -1,7 +1,7 @@
 <launch>
   <!-- Arguments -->
   <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
-  <arg name="sim_real" default="" doc="Run simulation or real robot [simulation, real]"/>
+  <arg name="sim_real" default="real" doc="Run simulation or real robot [simulation, real]"/>
   <arg name="planner" default="" doc="model type [dwa, teb]"/>
   <arg name="map_file" default="$(find turtlebot3_navigation)/maps/map_005.yaml"/>
   <arg name="open_rviz" default="true"/>
