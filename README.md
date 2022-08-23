@@ -1,135 +1,37 @@
-# KSAM-2022-Robotic-Competition
+# Lidar problem
 
-## Introduction
-**로봇 미션:** 제작한 로봇을 이용하여 과수원 모사 경기장 내의 출발점부터 도착점까지 주행하면서 과수 모형에 달린 과일을 검출, 분류, 계수함(로봇 임무 제한시간은 5분 이내) <br /> <br />
-**주행:** 과수 열을 인식하여 열 사이로 충돌없이 주행해야 함 <br />
-      &emsp; - 각 팀별로 주어지는 예비 시험에서 맵작성 가능 <br />
-      &emsp; - 주행시간은 로봇의 출발점부터 주행하면서 각 과수의 과일 검출을 끝내고 도착점까지 이동한 시간으로 측정함 <br /> <br />
-**회피:** 주행 동안 주어진 장애물 모형을 충돌 없이 회피하여야 함 <br />
-      &emsp; - 장애물은 본선대회 당일 임의 재배치 됨 <br /> <br />
-**검출:** 과수 모형에 달린 과일을 정상과와 질병과로 분류하고 계수해야 함
+## Problema 1
 
-![This is an image](images/gazebo1.jpg)
+Debido a que bajamos el lidar a 5cm de la base, ahora detecta las ruedas y los servos. por lo que el angulo se debe restringir. Aunque creo que si esta muy cerca el lidar lo omite por lo que no deberia ser un problema. De todas formas, para ajustar el angulo probe 2 soluciones.
 
-## Requirements
-```
-sudo apt-get install ros-noetic-slam-karto
-sudo apt-get install ros-noetic-teb-local-planner
-```
+### Solucion 1
+Script que hace 0 los rango de los angulos que no se necesitan:
+KSAM-2022-Robotic-Competition/ros/src/turtlebot3_bringup/scripts/lidar_corr.py
 
-## Instalation
-To install this repository on your home folder:
-```
-cd ~
-git clone git@github.com:mefisto2017/KSAM-2022-Robotic-Competition.git
-cd KSAM-2022-Robotic-Competition/ros
-catkin_make
-```
-Before running the repository the models path needs to be setup:
-```
-echo 'export GAZEBO_MODEL_PATH=~/KSAM-2022-Robotic-Competition/ros/src/robot_gazebo/models:${GAZEBO_MODEL_PATH}' >> ~/.bashrc
-source ~/.bashrc
-```
+No funciono
 
-## Run Simulation
-
-### Gazebo
+### Solucion 2
+Usar laser filter, se agrega en los launchers de karto, gmapping slams y en los de navegacions:
 ```
-source ./devel/setup.bash
-roslaunch robot_gazebo scenario_1_world.launch
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain" output="screen" name="laser_filter">
+    <rosparam file="$(find robot_slam)/config/angle_filter.yaml" command="load"/>
+  </node>
 ```
-
-### Karto SLAM
-In another terminal:
+Funciona, pero al usar los scripts de navegacion queda una sombra atras del robot (en la simulacion) y no anda bien.
+Tambien se cambio el urdf para que el sensor funcione en 360 grados.
+ KSAM-2022-Robotic-Competition/ros/src/turtlebot3_description/urdf/turtlebot3_burger.gazebo.xacro 
 ```
-cd ~/KSAM-2022-Robotic-Competition/ros
-source ./devel/setup.bash
-roslaunch robot_slam robot_slam.launch sim_real:='simulation'
+          <horizontal>
+            <samples>360</samples>          <!-- 260  without filter-->
+            <resolution>1</resolution>
+            <min_angle>0.0</min_angle>      <!-- -2.26893  without filter-->
+            <max_angle>6.28319</max_angle>  <!-- 2.26893  without filter-->
+          </horizontal>
 ```
-
-### Navigation
-In another terminal:
-```
-cd ~/KSAM-2022-Robotic-Competition/ros
-source ./devel/setup.bash
-```
-DWA planner:
-```
-roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation' planner:=dwa
-```
-TEB planner:
-```
-roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation' planner:=teb
-```
+Foto de la sombra.
 
 
-## Run Real Robot
+## Problema 2
+Al usar karto con el robot real las murallas se desplazan y no mapea bien, posibles problema odom, imu? o error del lidar.
 
-### Bring Up
-```
-cd ~/KSAM-2022-Robotic-Competition/ros
-source ./devel/setup.bash
-roslaunch turtlebot_bringup turtlebot_robot
-```
-
-### Karto SLAM
-In another terminal:
-```
-cd ~/KSAM-2022-Robotic-Competition/ros
-source ./devel/setup.bash
-roslaunch robot_slam robot_slam.launch sim_real:='real'
-```
-
-### Navigation
-In another terminal:
-```
-cd ~/KSAM-2022-Robotic-Competition/ros
-source ./devel/setup.bash
-```
-DWA planner:
-```
-roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation' planner:=dwa
-```
-TEB planner:
-```
-roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation' planner:=teb
-```
-
-
-## Common Scripts
-
-### Teleoperation
-In another terminal:
-```
-cd ~/KSAM-2022-Robotic-Competition/ros
-source ./devel/setup.bash
-roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
-```
-
-To initiate the waypoints:
-```
-cd ~/KSAM-2022-Robotic-Competition/ros
-source ./devel/setup.bash
-rosrun turtlebot3_navigation goals.py
-```
-
-To reset the robot position:
-
-```
-cd ~/KSAM-2022-Robotic-Competition/ros
-source ./devel/setup.bash
-rosrun turtlebot3_navigation reset.py
-```
-
-
-## TODO
-- [ ] DWA https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/1
-- [ ] Karto SLAM https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/3
-- [ ] Real Robot https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/7
-- [ ] Fruit Detection
-- [ ] Fruit Counting
-
-## Dection 'have to do'
-
-
-
+Foto del error del lidar
