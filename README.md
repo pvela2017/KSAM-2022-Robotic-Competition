@@ -39,13 +39,22 @@ source ./devel/setup.bash
 roslaunch robot_gazebo scenario_1_world.launch
 ```
 
-### Karto SLAM
+
+### Simultaneous Localization And Mapping
 In another terminal:
 ```
 cd ~/KSAM-2022-Robotic-Competition/ros
 source ./devel/setup.bash
-roslaunch robot_slam robot_slam.launch sim_real:='simulation'
 ```
+Karto SLAM:
+```
+roslaunch robot_slam robot_slam_simulation.launch slam_method:=karto
+```
+Gmapping SLAM:
+```
+roslaunch robot_slam robot_slam_simulation.launch slam_method:=gmapping
+```
+
 
 ### Navigation
 In another terminal:
@@ -55,12 +64,14 @@ source ./devel/setup.bash
 ```
 DWA planner:
 ```
-roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation' planner:=dwa
+roslaunch turtlebot3_navigation turtlebot3_navigation_simulation.launch planner:=dwa
 ```
 TEB planner:
 ```
-roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation' planner:=teb
+roslaunch turtlebot3_navigation turtlebot3_navigation_simulation.launch planner:=teb
 ```
+
+
 
 
 ## Run Real Robot
@@ -72,12 +83,20 @@ source ./devel/setup.bash
 roslaunch turtlebot_bringup turtlebot_robot
 ```
 
-### Karto SLAM
+
+### Simultaneous Localization And Mapping
 In another terminal:
 ```
 cd ~/KSAM-2022-Robotic-Competition/ros
 source ./devel/setup.bash
-roslaunch robot_slam robot_slam.launch sim_real:='real'
+```
+Karto SLAM:
+```
+roslaunch robot_slam robot_slam_real.launch slam_method:=karto
+```
+Gmapping SLAM:
+```
+roslaunch robot_slam robot_slam_real.launch slam_method:=gmapping
 ```
 
 ### Navigation
@@ -88,11 +107,11 @@ source ./devel/setup.bash
 ```
 DWA planner:
 ```
-roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation' planner:=dwa
+roslaunch turtlebot3_navigation turtlebot3_navigation_real.launch planner:=dwa
 ```
 TEB planner:
 ```
-roslaunch turtlebot3_navigation turtlebot3_navigation.launch sim_real:='simulation' planner:=teb
+roslaunch turtlebot3_navigation turtlebot3_navigation_real.launch sim_real:='simulation' planner:=teb
 ```
 
 
@@ -120,16 +139,6 @@ cd ~/KSAM-2022-Robotic-Competition/ros
 source ./devel/setup.bash
 rosrun turtlebot3_navigation reset.py
 ```
-
-
-## TODO
-- [ ] DWA https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/1
-- [ ] Karto SLAM https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/3
-- [ ] Real Robot https://github.com/mefisto2017/KSAM-2022-Robotic-Competition/issues/7
-- [ ] Fruit Detection
-- [ ] Fruit Counting
-
-## Dection 'have to do'
 
 
 
