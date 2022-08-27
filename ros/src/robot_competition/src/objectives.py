@@ -36,13 +36,18 @@ def obsDetec(initialAngle, finalAngle, obsDistance, msg):
     ini_index = int((iniAngle - lidar_min_angle_rad) / lidar_angle_incre_rad)
     fin_index = int((finAngle - lidar_min_angle_rad) / lidar_angle_incre_rad)
 
+    count = 0
     for i in range(ini_index,fin_index):
         if distances[i] <= obsDistance:
-            print("LED ON")
-            #GPIO.output(output_pin, GPIO.LOW)
-        else:
-            print("LED OFF")
-            #GPIO.output(output_pin, GPIO.HIGH)
+            count = count + 1
+
+    if count >= 14:
+        print("LED ON")
+        #GPIO.output(output_pin, GPIO.LOW)
+
+    else:
+        print("LED OFF")
+        #GPIO.output(output_pin, GPIO.HIGH)
 
 
 
