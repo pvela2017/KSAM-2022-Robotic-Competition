@@ -111,7 +111,7 @@ roslaunch turtlebot3_navigation turtlebot3_navigation_real.launch planner:=dwa
 ```
 TEB planner:
 ```
-roslaunch turtlebot3_navigation turtlebot3_navigation_real.launch sim_real:='simulation' planner:=teb
+roslaunch turtlebot3_navigation turtlebot3_navigation_real.launch planner:=teb
 ```
 
 
