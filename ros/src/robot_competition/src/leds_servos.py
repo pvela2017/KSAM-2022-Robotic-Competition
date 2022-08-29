@@ -12,6 +12,32 @@ from geometry_msgs.msg import Pose
 
 
 # Pin Definitions
+"""
+PWM pins must be configured using:
+    sudo /opt/nvidia/jetson-io/jetson-io.py
+
+If the screen just flash replace the lines in:
+    sudo /opt/nvidia/jetson-io/jetson-io.py
+
+     def __init__(self):
+        self.appdir = None
+        self.bootdir = '/boot'
+        self.extlinux = '/boot/extlinux/extlinux.conf'
+        dtbdir = os.path.join(self.bootdir, 'dtb')          <----------------------
+        fio.is_rw(self.bootdir)
+
+by 
+
+    def __init__(self):
+        self.appdir = None
+        self.bootdir = '/boot'
+        self.extlinux = '/boot/extlinux/extlinux.conf'
+        dtbdir = os.path.join(self.bootdir, '')
+        fio.is_rw(self.bootdir)
+
+ https://forums.developer.nvidia.com/t/jetpack-4-3-l4t-r32-3-1-released/109271/13
+
+"""
 
 # PWM pin
 output_pins = {
@@ -33,7 +59,12 @@ GPIO.setmode(GPIO.BOARD)
 # set pin as an output pin with optional initial state of LOW
 GPIO.setup(output_pwm, GPIO.OUT, initial=GPIO.LOW)
 p = GPIO.PWM(output_pwm, 50) # frecuency 50Hz
-p.start(50) # 50% of duty cycle means half position
+p.start(7.75) # is middle position of the servo
+"""
+7.75:  Middle position L ----- R
+3  :  Left camera on the front and Right camera on the back
+12.5: Right camera on the front and Left camera on the back
+"""
 
 # LED pin
 output_pin = 12  # BCM pin 18, BOARD pin 12
@@ -83,7 +114,14 @@ def servo(orientation):
 
 
 def angle2percent(angle):
-    percent = (5/90)*np.rad2deg(angle) + 2
+    """
+    Odom values are in rad
+    If robot is pointing to the front = 0.0 rad
+    If robot is pointing to the left  = 1.5 rad
+    If robot is pointing to the right = -1.5 rad
+    If robot points backwards         = -3.0 rad
+    """
+    percent = -3.166*angle + 7.75
     return percent
 
 
