@@ -12,11 +12,6 @@ from geometry_msgs.msg import Pose
 
 
 # Pin Definitions
-# LED pin
-#output_pin = 18  # BCM pin 18, BOARD pin 12
-# Pin Setup:
-#GPIO.setmode(GPIO.BCM)                              # BCM pin-numbering scheme from Raspberry Pi
-#GPIO.setup(output_pin, GPIO.OUT, initial=GPIO.HIGH) # Set pin as an output pin with optional initial state of HIGH --- High is OFF
 
 # PWM pin
 output_pins = {
@@ -34,10 +29,15 @@ if output_pwm is None:
 
 # Board pin-numbering scheme
 GPIO.setmode(GPIO.BOARD)
-# set pin as an output pin with optional initial state of LOW
+
+# Set pin as an output pin with optional initial state of LOW
 GPIO.setup(output_pin, GPIO.OUT, initial=GPIO.LOW)
 p = GPIO.PWM(output_pin, 50) # frecuency 50Hz
 p.start(50) # 50% of duty cycle means half position
+
+# LED pin
+#output_pin = 12  # BCM pin 18, BOARD pin 12
+#GPIO.setup(output_pin, GPIO.OUT, initial=GPIO.HIGH) # Set pin as an output pin with optional initial state of HIGH --- High is OFF
 """
 def laserData(msg):
     obsDetec(140, 220, 0.2, msg)
