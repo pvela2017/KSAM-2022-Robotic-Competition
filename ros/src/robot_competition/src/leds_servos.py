@@ -4,7 +4,7 @@
 import rospy
 import numpy as np
 import math
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import PoseWithCovariance
@@ -22,7 +22,7 @@ output_pins = {
     'JETSON_TX2_NX': 32,
     'JETSON_ORIN': 18,
 }
-"""
+
 output_pwm = output_pins.get(GPIO.model, None)
 if output_pwm is None:
     raise Exception('PWM not supported on this board')
@@ -30,15 +30,16 @@ if output_pwm is None:
 # Board pin-numbering scheme
 GPIO.setmode(GPIO.BOARD)
 
-# Set pin as an output pin with optional initial state of LOW
-GPIO.setup(output_pin, GPIO.OUT, initial=GPIO.LOW)
-p = GPIO.PWM(output_pin, 50) # frecuency 50Hz
+# set pin as an output pin with optional initial state of LOW
+GPIO.setup(output_pwm, GPIO.OUT, initial=GPIO.LOW)
+p = GPIO.PWM(output_pwm, 50) # frecuency 50Hz
 p.start(50) # 50% of duty cycle means half position
 
 # LED pin
-#output_pin = 12  # BCM pin 18, BOARD pin 12
-#GPIO.setup(output_pin, GPIO.OUT, initial=GPIO.HIGH) # Set pin as an output pin with optional initial state of HIGH --- High is OFF
-"""
+output_pin = 12  # BCM pin 18, BOARD pin 12
+GPIO.setup(output_pin, GPIO.OUT, initial=GPIO.HIGH) # Set pin as an output pin with optional initial state of HIGH --- High is OFF
+
+
 def laserData(msg):
     obsDetec(140, 220, 0.2, msg)
 
@@ -65,19 +66,19 @@ def obsDetec(initialAngle, finalAngle, obsDistance, msg):
             count = count + 1
 
     if count >= (fin_index-ini_index)/2:
-        print("LED ON")
-        #GPIO.output(output_pin, GPIO.LOW)
+        #print("LED ON")
+        GPIO.output(output_pin, GPIO.LOW)
 
     else:
-        print("LED OFF")
-        #GPIO.output(output_pin, GPIO.HIGH)
+        #print("LED OFF")
+        GPIO.output(output_pin, GPIO.HIGH)
 
 
 def servo(orientation):
     roll, pitch, yaw = euler_from_quaternion(orientation.x, orientation.y, orientation.z, orientation.w)
     percent = angle2percent(yaw)
     print(percent)
-    #p.ChangeDutyCycle(percent)
+    p.ChangeDutyCycle(percent)
 
 
 
