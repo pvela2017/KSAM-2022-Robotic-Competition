@@ -8,27 +8,26 @@ import numpy as np
 import socket
 
 from sensor_msgs.msg import LaserScan
-from nav_msgs.msg import Odometry
-from geometry_msgs.msg import PoseWithCovariance
+from geometry_msgs.msg import PoseWithCovarianceStamped
 from geometry_msgs.msg import Pose
 
-x_pos = [0.55, 0.85, 1.15, 1.45]
-y_pos = [0.45, 1.0, 1.55]
+y_pos = [0.55, 0.85, 1.15, 1.45]
+x_pos = [0.45, 1.0, 1.55]
 
 
-def callback(laser_sub, odom_sub):
+def callback(laser_sub, amcl_sub):
     # laser_sub msgs from /scan topic
-    # odom_sub  msgs from /odom topic
+    # amcl_sub  msgs from /amcl_pose topic
     # plus minus 2 centimeters from the tree
     epsilon = 0.02
     # range for getting the column in which the robot is
     column_range = 0.273 # got this value from map calculation
-    robot_position = odom_sub.pose.pose.position
+    robot_position = amcl_sub.pose.pose.position
 
-    for j in y_pos: # Check in which column the robot is j = 0: first column, j = 1: Middle column, j = 2: Third column
-        if abs(robot_position.y - j) <= column_range:
-            for i in x_pos: # Check near which tree line the robot is
-                if abs(robot_position.x - i) <= epsilon:
+    for j in x_pos: # Check in which column the robot is j = 0: first column, j = 1: Middle column, j = 2: Third column
+        if abs(robot_position.x - j) <= column_range:
+            for i in y_pos: # Check near which tree line the robot is
+                if abs(robot_position.y - i) <= epsilon:
                     left_tree = treeDetec() # Left tree detection
                     right_tree = treeDetec() # Right tree detection
                     if left_tree:
@@ -120,7 +119,7 @@ def message(tree, left_right):
 if __name__ == '__main__':
     rospy.init_node('tree_labelling')
     laser_sub = message_filters.Subscriber('/scan', LaserScan)
-    odom_sub = message_filters.Subscriber('/odom', Odometry)
+    odom_sub = message_filters.Subscriber('/amcl_pose', PoseWithCovarianceStamped)
 
     ts = message_filters.ApproximateTimeSynchronizer([laser_sub, odom_sub],  queue_size=5, slop=0.1, allow_headerless=True)
     ts.registerCallback(callback)

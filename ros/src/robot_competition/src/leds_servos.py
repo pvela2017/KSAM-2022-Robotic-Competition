@@ -7,7 +7,7 @@ import math
 import RPi.GPIO as GPIO
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
-from geometry_msgs.msg import PoseWithCovariance
+from geometry_msgs.msg import PoseWithCovarianceStamped
 from geometry_msgs.msg import Pose
 
 
@@ -168,5 +168,5 @@ def euler_from_quaternion(x, y, z, w):
 if __name__ == '__main__':
     rospy.init_node('objectives')
     rospy.Subscriber("/scan", LaserScan, laserData, queue_size=1)
-    rospy.Subscriber("/odom", Odometry, odomData, queue_size=1)
+    rospy.Subscriber("/amcl_pose", PoseWithCovarianceStamped, odomData, queue_size=1)
     rospy.spin()
