@@ -124,6 +124,20 @@ def angle2percent(angle):
     if angle > 1.5 or angle < -1.5: # robot going from bottom to top
         percent = -3.166*angle + 7.75
     else: # robot going from top to bottom
+        # For this way we need to separate the slope into 2
+        if angle < -1.5:
+            percent = 2.375*angle + 0.625
+        if angle >= -1.5:
+            percent = -3.167*angle -1.7505
+        else:
+            percent = 7.75
+
+    # Limits
+    if percent > 9.5:
+        percent = 9.5
+
+    if percent < 6.2:
+        percent = 6.2
 
     return percent
 
