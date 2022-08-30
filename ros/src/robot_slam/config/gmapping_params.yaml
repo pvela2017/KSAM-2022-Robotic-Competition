@@ -22,7 +22,7 @@ xmin: 0.0
 ymin: 0.0
 xmax: 2.0
 ymax: 2.0
-delta: 0.01
+delta: 0.05
 llsamplerange: 0.01
 llsamplestep: 0.01
 lasamplerange: 0.005

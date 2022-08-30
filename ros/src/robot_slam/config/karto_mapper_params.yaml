@@ -1,7 +1,7 @@
 # Parameters description: http://wiki.ros.org/slam_karto
 
-resolution: 0.01
-delta: 0.01
+resolution: 0.05
+delta: 0.05
 map_update_interval: 1.0
 
 # General Parameters
