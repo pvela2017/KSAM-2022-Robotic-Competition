@@ -1,6 +1,6 @@
 image: new_map005.pgm
-resolution: 0.050000
-origin: [-0.032969, -0.029909, 0.000000]
+resolution: 0.005000
+origin: [-0.041246, -0.030985, 0.000000]
 negate: 0
 occupied_thresh: 0.65
 free_thresh: 0.196
