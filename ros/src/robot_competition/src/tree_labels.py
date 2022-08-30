@@ -28,7 +28,7 @@ def callback(laser_sub, amcl_sub):
         if abs(robot_position.x - j) <= column_range:
             for i in y_pos: # Check near which tree line the robot is
                 if abs(robot_position.y - i) <= epsilon:
-                    left_tree = treeDetec() # Left tree detection
+                    left_tree = treeDetec() # Left tree detection      TODO!!!!
                     right_tree = treeDetec() # Right tree detection
                     if left_tree:
                         tree = tree_labelling(j, i, False) # Get tree label
@@ -66,8 +66,8 @@ def tree_labelling(column, tree_line, left_right):
     # if left_right = False ----> left tree
     # Right & Left trees organize on lists
     row0 = [(1, 5), (2, 6), (3, 7), (4, 8)]
-    row1 = [(12, 8), (11, 7), (10, 6), (9, 5)]
-    row2 = [(9, 13), (10, 14), (11, 15), (12, 16)]
+    row1 = [(12, -8), (11, -7), (10, -6), (9, -5)]
+    row2 = [(-9, 13), (-10, 14), (-11, 15), (-12, 16)]
 
     if column == 0 and tree_line < 4:
         # Right tree
@@ -94,7 +94,7 @@ def tree_labelling(column, tree_line, left_right):
             return row2[tree_line][0]
     # Error        
     else:
-        return -1
+        return 0
 
 def message(tree, left_right):
     # Setup server connection
@@ -106,10 +106,11 @@ def message(tree, left_right):
     history = []
 
     # Create message
-    message = str(tree) + "-" + left_right
+    check_message = str(tree) + "-" + left_right
+    message = str(abs(tree)) + "-" + left_right
 
     # Check if the msg has already been sent
-    if not (message in history):
+    if not (check_message in history):
         history.append(message)
         # Send message
         sock.sendall(message.encode()) # Send data
