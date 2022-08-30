@@ -121,7 +121,10 @@ def angle2percent(angle):
     If robot is pointing to the right = -1.5 rad
     If robot points backwards         = -3.0 rad
     """
-    percent = -3.166*angle + 7.75
+    if angle > 1.5 or angle < -1.5: # robot going from bottom to top
+        percent = -3.166*angle + 7.75
+    else: # robot going from top to bottom
+
     return percent
 
 
