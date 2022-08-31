@@ -121,7 +121,7 @@ def angle2percent(angle):
     If robot is pointing to the right = -1.5 rad
     If robot points backwards         = -3.0 rad
     """
-    if angle > 1.5 or angle < -1.5: # robot going from bottom to top
+    if angle < 1.5 or angle > -1.5: # robot going from bottom to top
         percent = -3.166*angle + 7.75
     else: # robot going from top to bottom
         # For this way we need to separate the slope into 2
@@ -168,5 +168,5 @@ def euler_from_quaternion(x, y, z, w):
 if __name__ == '__main__':
     rospy.init_node('objectives')
     rospy.Subscriber("/scan", LaserScan, laserData, queue_size=1)
-    rospy.Subscriber("/amcl_pose", PoseWithCovarianceStamped, odomData, queue_size=1)
+    rospy.Subscriber("/odom", Odometry, odomData, queue_size=1)
     rospy.spin()

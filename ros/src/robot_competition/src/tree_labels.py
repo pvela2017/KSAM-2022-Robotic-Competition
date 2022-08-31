@@ -28,8 +28,8 @@ def callback(laser_sub, amcl_sub):
         if abs(robot_position.x - j) <= column_range:
             for i in y_pos: # Check near which tree line the robot is
                 if abs(robot_position.y - i) <= epsilon:
-                    left_tree = treeDetec() # Left tree detection      TODO!!!!
-                    right_tree = treeDetec() # Right tree detection
+                    left_tree = treeDetec(229, 232, 0.3, laser_sub) # Left tree detection      values got from experiments
+                    right_tree = treeDetec(0, 3, 0.3, laser_sub) # Right tree detection        values got from experiments
                     if left_tree:
                         tree = tree_labelling(j, i, False) # Get tree label
                         message(tree, "l") # Send tree number and side
@@ -38,19 +38,11 @@ def callback(laser_sub, amcl_sub):
                         message(tree, "r") # Send tree number and side
 
     
-def treeDetec(initialAngle, finalAngle, treeDistance, msg):
-    lidar_min_angle_rad   = msg.angle_min
-    lidar_max_angle_rad   = msg.angle_max
-    lidar_angle_incre_rad = msg.angle_increment
+def treeDetec(initial_index, final_index, treeDistance, msg):
     distances = msg.ranges
 
-    iniAngle = np.deg2rad(initialAngle)
-    finAngle = np.deg2rad(finalAngle)
-    ini_index = int((iniAngle - lidar_min_angle_rad) / lidar_angle_incre_rad)
-    fin_index = int((finAngle - lidar_min_angle_rad) / lidar_angle_incre_rad)
-
     count = 0
-    for i in range(ini_index,fin_index):
+    for i in range(initial_index, final_index):
         if distances[i] <= treeDistance:
             count = count + 1
 
