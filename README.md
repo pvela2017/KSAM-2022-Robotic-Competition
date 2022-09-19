@@ -115,7 +115,7 @@ roslaunch turtlebot3_navigation turtlebot3_navigation_real.launch planner:=teb
 ```
 
 
-## Common Scripts
+## Other Scripts
 
 ### Teleoperation
 In another terminal:
