@@ -75,7 +75,7 @@ roslaunch turtlebot3_navigation turtlebot3_navigation_simulation.launch planner:
 
 
 ## Run Real Robot
-
+![This is an image](images/robot.jpg)
 ### Bring Up
 ```
 cd ~/KSAM-2022-Robotic-Competition/ros
