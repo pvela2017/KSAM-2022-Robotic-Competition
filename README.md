@@ -132,7 +132,7 @@ source ./devel/setup.bash
 rosrun turtlebot3_navigation goals.py
 ```
 
-To reset the robot position:
+To reset the robot position in the simulation:
 
 ```
 cd ~/KSAM-2022-Robotic-Competition/ros
@@ -140,5 +140,18 @@ source ./devel/setup.bash
 rosrun turtlebot3_navigation reset.py
 ```
 
+Launch obstacle LED and camera servo:
 
+```
+cd ~/KSAM-2022-Robotic-Competition/ros
+source ./devel/setup.bash
+rosrun robot_competition leds_servos.py
+```
 
+Launch tree identification using lidar:
+
+```
+cd ~/KSAM-2022-Robotic-Competition/ros
+source ./devel/setup.bash
+rosrun robot_competition tree_labels.py
+```
