@@ -155,3 +155,10 @@ cd ~/KSAM-2022-Robotic-Competition/ros
 source ./devel/setup.bash
 rosrun robot_competition tree_labels.py
 ```
+
+
+## YOLOX - Apple Counting
+
+### Requirements
+### Training
+### Running
