@@ -3,3 +3,4 @@
 # Copyright (c) Megvii Inc. All rights reserved.
 
 from .imx_camera_read import *
+#from .dual_camera import *

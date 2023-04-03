@@ -231,6 +231,11 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
             result_frame = predictor.visual(outputs[0], img_info, predictor.confthre)
             if args.save_result:
                 vid_writer.write(result_frame)
+#                cv2.namedWindow("yolox", cv2.WINDOW_NORMAL)#added by dohwan
+#                cv2.imshow("yolox", result_frame)#added by dohwan
+#            ch = cv2.waitKey(1)#added by dohwan
+#            if ch == 27 or ch == ord("q") or ch == ord("Q"):
+#                break
             else:
                 cv2.namedWindow("yolox", cv2.WINDOW_NORMAL)
                 cv2.imshow("yolox", result_frame)
@@ -316,5 +321,25 @@ def main(exp, args):
 if __name__ == "__main__":
     args = make_parser().parse_args()
     exp = get_exp(args.exp_file, args.name)
+    
+    #dohwan
+    cap = cv2.VideoCapture(args.path if args.demo == "video" else args.camid)
+    if cap.isOpened():
+    	print('width:{}, height:{}'.format(cap.get(3), cap.get(4)))
+    while True:
+    	ret, frame = cap.read()
+    	if ret:
+    		cv2.imshow('Cam', frame)
+    		ch = cv2.waitKey(1)
+    		if ch == 27 or ch == ord("q") or ch == ord("Q"):
+    			break
 
+    	else:
+    		print('Cam error')
+    cap.release()
+    cv2.destroyAllWindows()
+    #dohwan
+    
     main(exp, args)
+    
+    

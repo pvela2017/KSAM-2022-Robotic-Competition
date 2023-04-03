@@ -1,6 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+
 import cv2
 import numpy as np
 import threading
+import time
+import os
 
 class Start_Cameras:
 
@@ -88,10 +93,10 @@ class Start_Cameras:
             sensor_mode=3,
             capture_width=1280,
             capture_height=720,
-            display_width=640,
-            display_height=360,
+            display_width=1280,
+            display_height=720,
             framerate=30,
-            flip_method=0,
+            flip_method=2,
     ):
         return (
                 "nvarguscamerasrc sensor-id=%d sensor-mode=%d ! "
@@ -113,29 +118,37 @@ class Start_Cameras:
                     display_height,
                 )
         )
-
-
+        
 #This is the main. Read this first. 
 if __name__ == "__main__":
     left_camera = Start_Cameras(0).start()
     right_camera = Start_Cameras(1).start()
-
+    path = '/media/myusb2/'
+    num1 = 1
+    num2 = 2
+    
     while True:
         left_grabbed, left_frame = left_camera.read()
         right_grabbed, right_frame = right_camera.read()
 
         if left_grabbed and right_grabbed:
-            images = np.hstack((left_frame, right_frame))
-            cv2.imshow("Camera Images", images)
+            
+            cv2.imshow("Left camera", left_frame)
+            cv2.imshow("Right camera", right_frame)
+            
+            basename = "Image"
+            timestr = time.strftime("%Y%m%d_%H%M%S")
+            filename = "_".join([basename,timestr])
+            print(filename)
+            filename = ".".join([filename, "jpg"])
+            print(filename)
+            cv2.imwrite(path + filename, left_frame)
+            
+            #cv2.imwrite(path + "%d.jpg" %num2, right_frame)
+            
             k = cv2.waitKey(1) & 0xFF
 
             if k == ord('q'):
                 break
         else:
             break
-
-    left_camera.stop()
-    left_camera.release()
-    right_camera.stop()
-    right_camera.release()
-    cv2.destroyAllWindows()

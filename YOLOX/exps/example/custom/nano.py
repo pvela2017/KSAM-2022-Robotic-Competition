@@ -22,7 +22,7 @@ class Exp(MyExp):
         self.enable_mixup = False
 
         # Define yourself dataset path
-        self.data_dir = "datasets/COCO"
+        self.data_dir = "datasets/coco128"
         self.train_ann = "instances_train2017.json"
         self.val_ann = "instances_val2017.json"
 

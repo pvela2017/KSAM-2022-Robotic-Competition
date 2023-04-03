@@ -16,6 +16,8 @@ from yolox.data.datasets import COCO_CLASSES
 from yolox.exp import get_exp
 from yolox.utils import fuse_model, get_model_info, postprocess, vis
 
+import numpy as np
+
 from camera import Start_Cameras
 
 IMAGE_EXT = [".jpg", ".jpeg", ".webp", ".bmp", ".png"]
@@ -209,11 +211,14 @@ def image_demo(predictor, vis_folder, path, current_time, save_result):
 
 
 def imageflow_demo(predictor, vis_folder, current_time, args):
-    camera = Start_Cameras(args.camid)
-    cap = camera.start()
+    left_camera = Start_Cameras(0).start()
+    right_camera = Start_Cameras(1).start()                
     width = 1280  # float
-    height = 720  # float
+    height = 360  # float
     fps = 30
+    
+    # save_path = '/media/myusb2/'   
+    
     if args.save_result:
         save_folder = os.path.join(
             vis_folder, time.strftime("%Y_%m_%d_%H_%M_%S", current_time)
@@ -227,51 +232,32 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
         vid_writer = cv2.VideoWriter(
             save_path, cv2.VideoWriter_fourcc(*"mp4v"), fps, (int(width), int(height))
         )
-    while True:
-        grabbed, frame = cap.read()
         
-        if grabbed:
-            cv2.imshow("Cam", frame)
+    while True:
+        left_grabbed, left_frame = left_camera.read()
+        right_grabbed, right_frame = right_camera.read()
+
+        if left_grabbed and right_grabbed:
+            images = np.hstack((left_frame, right_frame))
             
+            outputs, img_info = predictor.inference(images)
+            result_frame = predictor.visual(outputs[0], img_info, predictor.confthre)
+            if args.save_result:
+                vid_writer.write(result_frame)
+            else:
+                cv2.namedWindow("yolox", cv2.WINDOW_NORMAL)
+                cv2.imshow("yolox", result_frame)
             k = cv2.waitKey(1) & 0xFF
             if k == ord('q'):
-            	break
-            else:
-            	break
-    		        
-        cap.stop()
-        cap.release()
-        cv2.destroyAllWindows
+                break
+        else:
+            break
 
-#    		if args.save_result:
-#    			vid_writer.write(result_frame)
-#    		    
-#    		else:
-#    			cv2.namedWindow("yolox", cv2.WINDOW_NORMAL)
-#    			cv2.imshow("yolox", result_frame)
-#    		ch = cv2.waitKey(1)
-#    		if ch == 27 or ch == ord("q") or ch == ord("Q"):
-#    			break
-#
-#	else:
-#		break
-    
-#        ret_val, frame = cap.read()
-#        if ret_val:
-#            outputs, img_info = predictor.inference(frame)
-#            result_frame = predictor.visual(outputs[0], img_info, predictor.confthre)
-#            if args.save_result:
-#                vid_writer.write(result_frame)
-#
-#           else:
-#               cv2.namedWindow("yolox", cv2.WINDOW_NORMAL)
-#               cv2.imshow("yolox", result_frame)
-#           ch = cv2.waitKey(1)
-#           if ch == 27 or ch == ord("q") or ch == ord("Q"):
-#               break
-#        else:
-#            break
-
+    left_camera.stop()
+    left_camera.release()
+    right_camera.stop()
+    right_camera.release()
+    cv2.destroyAllWindows()
 
 def main(exp, args):
     if not args.experiment_name:
@@ -350,5 +336,26 @@ if __name__ == "__main__":
     exp = get_exp(args.exp_file, args.name)
     
     main(exp, args)
-    
-    
+
+#    left_camera = Start_Cameras(0).start()
+#    right_camera = Start_Cameras(1).start()
+#
+#    while True:
+#        left_grabbed, left_frame = left_camera.read()
+#        right_grabbed, right_frame = right_camera.read()
+#
+#        if left_grabbed and right_grabbed:
+#            images = np.hstack((left_frame, right_frame))
+#            cv2.imshow("Camera Images", images)
+#            k = cv2.waitKey(1) & 0xFF
+#
+#            if k == ord('q'):
+#                break
+#        else:
+#            break
+#
+#    left_camera.stop()
+#    left_camera.release()
+#    right_camera.stop()
+#    right_camera.release()
+#    cv2.destroyAllWindows()
