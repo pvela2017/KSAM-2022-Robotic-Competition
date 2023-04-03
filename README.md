@@ -9,7 +9,7 @@
       &emsp; - 장애물은 본선대회 당일 임의 재배치 됨 <br /> <br />
 **검출:** 과수 모형에 달린 과일을 정상과와 질병과로 분류하고 계수해야 함
 
-![This is an image](images/gazebo1.jpg)
+![This is an image](images/diagram.png)
 
 ## Requirements
 ```sh
@@ -32,6 +32,7 @@ source ~/.bashrc
 ```
 
 ## Run Simulation
+![This is an image](images/gazebo1.jpg)
 
 ### Gazebo
 ```sh
