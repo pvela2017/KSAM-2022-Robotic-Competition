@@ -71,7 +71,6 @@ setuptools.setup(
     python_requires=">=3.6",
     install_requires=get_install_requirements(),
     setup_requires=["wheel"],  # avoid building error when pip is not updated
-    long_description=get_long_description(),
     long_description_content_type="text/markdown",
     include_package_data=True,  # include files in MANIFEST.in
     ext_modules=get_ext_modules(),
