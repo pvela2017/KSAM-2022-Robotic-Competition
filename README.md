@@ -162,19 +162,22 @@ rosrun robot_competition tree_labels.py
 [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) is a single-stage object detector that makes several modifications to YOLOv3 with a DarkNet53 backbone. We chose YOLOX because it is a lightweight model able to run in a Jetson Nano. Also because our familiarity working with other YOLO neural network.
 
 ### Requirements
-maybe
+To install the Yolo requirement:
+```sh
+cd ./YOLOX
 conda create -n yolox python=3.7
 conda activate yolox
 conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
 pip3 install -r requirements.txt
 pip3 install -v -e .
-To install the Yolo requirement:
-```sh
-cd ./YOLOX
-pip install -r requirements.txt
 ```
 
 ### Running
+Pc Test:
+```sh
+python3 tools/demo.py video -f ./nano.py -c ./best_ckpt.pth --path ./1_2.mp4 --conf 0.25 --nms 0.45 --tsize 320 --save_result --device [cpu/gpu]
+```
+
 For counting the apples:
 ```sh
 python3 digiag_1st.py capture -f ./nano.py -c ./best_ckpt.pth --conf 0.25 --nms 0.45 --tsize 320 --device gpu --save_result
