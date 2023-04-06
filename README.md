@@ -160,9 +160,10 @@ rosrun robot_competition tree_labels.py
 
 ## YOLOX - Apple Counting
 [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) is a single-stage object detector that makes several modifications to YOLOv3 with a DarkNet53 backbone. We chose YOLOX because it is a lightweight model able to run in a Jetson Nano. Also because our familiarity working with other YOLO neural network.
+![This is an image](images/apple.jpeg)
 
 ### Requirements
-To install the Yolo requirement:
+To install the Yolo requirements:
 ```sh
 cd ./YOLOX
 conda create -n yolox python=3.7
