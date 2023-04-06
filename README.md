@@ -165,7 +165,7 @@ rosrun robot_competition tree_labels.py
 To install the Yolo requirement:
 ```sh
 cd ./YOLOX
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Running
