@@ -15,6 +15,11 @@
 ```sh
 sudo apt-get install ros-noetic-slam-karto
 sudo apt-get install ros-noetic-teb-local-planner
+
+# Turtlebot
+sudo apt install ros-noetic-turtlebot3-msgs
+sudo apt install ros-noetic-turtlebot3
+sudo apt install ros-noetic-dynamixel-sdk
 ```
 
 ## Instalation
