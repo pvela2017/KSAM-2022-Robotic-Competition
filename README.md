@@ -26,7 +26,7 @@ sudo apt install ros-noetic-dynamixel-sdk
 To install this repository on your home folder:
 ```sh
 cd ~
-git clone git@github.com:mefisto2017/KSAM-2022-Robotic-Competition.git
+git clone git@github.com:pvela2017/KSAM-2022-Robotic-Competition.git
 cd KSAM-2022-Robotic-Competition/ros
 catkin_make
 ```
